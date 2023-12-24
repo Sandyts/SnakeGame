@@ -4,16 +4,21 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <windows.h> 
+#include <time.h>
 
 int i, j, height = 20, width = 20;
 int gameover, score;
 int x, y, fruitx, fruity, flag;
+int tailX[100], tailY[100];
+int nTail;
+bool print;
 
 // Function to generate the fruit 
 // within the boundary 
 void setup()
 {
 	gameover = 0;
+	srand(time(NULL));
 
 	// Stores height and width 
 	x = height / 2;
@@ -33,23 +38,42 @@ label2:
 void draw()
 {
 	system("cls");//clear previous movement
-	for (i = 0; i < height; i++) {
-		for (j = 0; j < width; j++) {
-			if (i == 0 || i == width - 1|| j == 0 || j == height - 1) {
+	for (i = 0; i < width + 2; i++) {
+		printf("#");
+	}
+	printf("\n");
+	for (i = 1; i <= height; i++) {
+		for(j =1;j<=width+1;j++){
+			if (j == 1 || j== width +1) {
 				printf("#");
 			}
-			else {
-				if (i == x && j == y)
-					printf("0");
-				else if (i == fruitx
-					&& j == fruity)
-					printf("*");
-				else
-					printf(" ");
+			if (i == y && j == x) {
+				printf("0");
 			}
+			else if (j == fruitx && i == fruity) {
+				printf("*");
+			}
+			else {
+					print = false;
+					for (int k = 0; k < nTail; k++)
+					{
+						if (tailX[k] == j && tailY[k] == i)
+						{
+							printf("0");
+							print = true;
+						}
+					}
+					if (!print)
+						printf(" ");
+				}
+			}
+			printf("\n");
+		}
+		for (i = 0; i < width + 2; i++) {
+			printf("#");
 		}
 		printf("\n");
-	}
+
 
 	// Print the score after the 
 	// game ends 
@@ -87,28 +111,54 @@ void input()
 void logic()
 {
 	Sleep(100); 
+
+	int prevX = tailX[0];
+	int prevY = tailY[0];
+	int prev2X, prev2Y;
+	tailX[0] = x;
+	tailY[0] = y;
+	for (int i = 1; i < nTail; i++)
+	{
+		prev2X = tailX[i];
+		prev2Y = tailY[i];
+		tailX[i] = prevX;
+		tailY[i] = prevY;
+		prevX = prev2X;
+		prevY = prev2Y;
+	}
+	
 	switch (flag) {
 	case 1:
-		y--;
+		x--;
 		break;
 	case 2:
-		x++;
-		break;
-	case 3:
 		y++;
 		break;
+	case 3:
+		x++;
+		break;
 	case 4:
-		x--;
+		y--;
 		break;
 	default:
 		break;
 	}
 
 	// If the game is over 
-	if (x < 0 || x > height
-		|| y < 0 || y > width) {
+	if (x < 0 || x > height || y < 0 || y > width) {
 		gameover = 1;
 		printf("\n\nGame Over!!!\n");
+		printf("You Hit The Wall!!\n");
+	}
+
+	// If hit the tail 
+	for (int i = 0; i < nTail; i++)
+	{
+		if (tailX[i] == x && tailY[i] == y)
+		{
+			printf("\n\nGame Over!!!\n");
+			printf("You Hit The Tail!!\n");
+		}
 	}
 
 	// If snake reaches the fruit 
@@ -126,6 +176,7 @@ void logic()
 		if (fruity == 0)
 			goto label4;
 		score += 10;
+		nTail++;
 	}
 }
 
