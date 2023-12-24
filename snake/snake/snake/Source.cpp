@@ -1,5 +1,3 @@
-// C program to build the complete 
-// snake game 
 #include <conio.h> 
 #include <stdio.h> 
 #include <stdlib.h> 
@@ -7,22 +5,23 @@
 #include <time.h>
 
 int i, j, height = 20, width = 20;
-int gameover, score,sleep_time=100;
+int score,sleep_time=100;
 int x, y, fruitx, fruity, flag;
 int tailX[100], tailY[100];
 int nTail;
-bool print;
+bool print,gameover;
 
 // Function to generate the fruit 
 // within the boundary 
 void setup()
 {
-	gameover = 0;
+	gameover = false;
 	srand(time(NULL));
 
 	// Stores height and width 
 	x = height / 2;
 	y = width / 2;
+
 label1:
 	fruitx = rand() % 20;
 	if (fruitx == 0)
@@ -43,16 +42,17 @@ void draw()
 	}
 	printf("\n");
 	for (i = 1; i <= height; i++) {
-		for(j =1;j<=width+1;j++){
-			if (j == 1 || j== width +1) {
+		for(j =1 ; j<= width+1 ; j++)
+		{
+			if (j == 1 || j== width +1) 
 				printf("#");
-			}
-			if (i == y && j == x) {
+
+			if (i == y && j == x) 
 				printf("0");
-			}
-			else if (j == fruitx && i == fruity) {
+			
+			else if (j == fruitx && i == fruity) 
 				printf("*");
-			}
+			
 			else {
 					print = false;
 					for (int k = 0; k < nTail; k++)
@@ -72,14 +72,10 @@ void draw()
 		for (i = 0; i < width + 2; i++) {
 			printf("#");
 		}
-		printf("\n");
-
-
-	// Print the score after the 
-	// game ends 
-	printf("\n\n----------------------------\nscore = %d", score);
-	printf("\n");
-	printf("press X to quit the game");
+		// Print the score after the 
+		// game ends 
+		printf("\n\n----------------------------\nscore = %d", score);
+		printf("\npress X to quit the game");
 }
 
 // Function to take the input 
@@ -100,7 +96,7 @@ void input()
 			flag = 4;
 			break;
 		case 'x':
-			gameover = 1;
+			gameover = true;
 			break;
 		}
 	}
@@ -110,7 +106,6 @@ void input()
 // each movement 
 void logic()
 {
-	Sleep(sleep_time);
 
 	int prevX = tailX[0];
 	int prevY = tailY[0];
@@ -128,25 +123,25 @@ void logic()
 	}
 	
 	switch (flag) {
-	case 1:
-		x--;
-		break;
-	case 2:
-		y++;
-		break;
-	case 3:
-		x++;
-		break;
-	case 4:
-		y--;
-		break;
-	default:
-		break;
+		case 1:
+			x--;
+			break;
+		case 2:
+			y++;
+			break;
+		case 3:
+			x++;
+			break;
+		case 4:
+			y--;
+			break;
+		default:
+			break;
 	}
 
 	// If the game is over 
 	if (x < 0 || x > height || y < 0 || y > width) {
-		gameover = 1;
+		gameover = true;
 		printf("\n\nGame Over!!!\n");
 		printf("You Hit The Wall!!\n");
 	}
@@ -156,6 +151,7 @@ void logic()
 	{
 		if (tailX[i] == x && tailY[i] == y)
 		{
+			gameover = true;
 			printf("\n\nGame Over!!!\n");
 			printf("You Hit The Tail!!\n");
 		}
@@ -175,14 +171,14 @@ void logic()
 		fruity = rand() % 20;
 		if (fruity == 0)
 			goto label4;
-		score += 10;
-		nTail++;
-		if (score >= 50) {
-			sleep_time = 50;
+	score += 10;
+	nTail++;
+	if (score >= 50) {
+		sleep_time = 50;
 		}
-		else if (score >= 100) {
-			sleep_time = 50;
-		}
+	}
+	else if (score >= 100) {
+		sleep_time = 10 * rand() % 5;
 	}
 }
 
@@ -201,5 +197,7 @@ int main()
 		draw();
 		input();
 		logic();
+		Sleep(sleep_time);
 	}
+	return 0;
 }
