@@ -53,7 +53,7 @@ void draw()
 
 	// Print the score after the 
 	// game ends 
-	printf("score = %d", score);
+	printf("\n\n----------------------------\nscore = %d", score);
 	printf("\n");
 	printf("press X to quit the game");
 }
@@ -106,8 +106,10 @@ void logic()
 
 	// If the game is over 
 	if (x < 0 || x > height
-		|| y < 0 || y > width)
+		|| y < 0 || y > width) {
 		gameover = 1;
+		printf("\n\nGame Over!!!\n");
+	}
 
 	// If snake reaches the fruit 
 	// then update the score 

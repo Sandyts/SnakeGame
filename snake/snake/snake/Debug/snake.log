@@ -1,1 +1,4 @@
-﻿  snake.vcxproj -> C:\Users\USER\Desktop\SnakeGame\snake\snake\Debug\snake.exe
+﻿  Source.cpp
+c:\users\user\desktop\snakegame\snake\snake\snake\source.cpp(135): warning C4101: 'm': 未參考的區域變數
+c:\users\user\desktop\snakegame\snake\snake\snake\source.cpp(135): warning C4101: 'n': 未參考的區域變數
+  snake.vcxproj -> C:\Users\USER\Desktop\SnakeGame\snake\snake\Debug\snake.exe
