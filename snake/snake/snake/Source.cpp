@@ -7,7 +7,7 @@
 #include <time.h>
 
 int i, j, height = 20, width = 20;
-int gameover, score;
+int gameover, score,sleep_time=100;
 int x, y, fruitx, fruity, flag;
 int tailX[100], tailY[100];
 int nTail;
@@ -59,7 +59,7 @@ void draw()
 					{
 						if (tailX[k] == j && tailY[k] == i)
 						{
-							printf("0");
+							printf("o");
 							print = true;
 						}
 					}
@@ -110,7 +110,7 @@ void input()
 // each movement 
 void logic()
 {
-	Sleep(100); 
+	Sleep(sleep_time);
 
 	int prevX = tailX[0];
 	int prevY = tailY[0];
@@ -177,6 +177,12 @@ void logic()
 			goto label4;
 		score += 10;
 		nTail++;
+		if (score >= 50) {
+			sleep_time = 50;
+		}
+		else if (score >= 100) {
+			sleep_time = 50;
+		}
 	}
 }
 
