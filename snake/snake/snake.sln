@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.34031.82
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "snake", "snake\snake.vcxproj", "{ACBAFB12-DE96-4594-AE81-0599664161DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Debug|x64.ActiveCfg = Debug|x64
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Debug|x64.Build.0 = Debug|x64
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Debug|x86.ActiveCfg = Debug|Win32
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Debug|x86.Build.0 = Debug|Win32
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Release|x64.ActiveCfg = Release|x64
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Release|x64.Build.0 = Release|x64
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Release|x86.ActiveCfg = Release|Win32
+		{ACBAFB12-DE96-4594-AE81-0599664161DE}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6786C3CA-2AA9-451C-83E4-A480156016FF}
+	EndGlobalSection
+EndGlobal
