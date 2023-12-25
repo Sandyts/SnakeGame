@@ -5,8 +5,9 @@
 #include <time.h>
 
 int i, j, height = 20, width = 20;
-int score,sleep_time=100;
-int x, y, fruitx, fruity, flag;
+int preox, preoy; //for the position os obstacle 
+int score,sleep_time=300;
+int x, y, fruitx, fruity, flag, obX, obY;
 int tailX[100], tailY[100];
 int nTail;
 bool print,gameover;
@@ -52,6 +53,14 @@ void draw()
 			
 			else if (j == fruitx && i == fruity) 
 				printf("*");
+
+			else if (i == obY && j == obY && score>=80)
+			{
+				preox = i;
+				preoy = j;
+				printf("=====");
+				j += 4;
+			}
 			
 			else {
 					print = false;
@@ -75,6 +84,8 @@ void draw()
 		// Print the score after the 
 		// game ends 
 		printf("\n\n----------------------------\nscore = %d", score);
+		printf("\nob:  %d, %d",  obX, obY); //next obstacle
+		printf("\npreo: %d, %d", preox, preoy); // next obstacle for now
 		printf("\npress X to quit the game");
 }
 
@@ -146,6 +157,13 @@ void logic()
 		printf("You Hit The Wall!!\n");
 	}
 
+	// If hit the obstacle 
+	if (x >= preox && x <(preox + 6) && (y == preoy)) {
+		gameover = true;
+		printf("\n\nGame Over!!!\n");
+		printf("You Hit The obstacle!!\n");
+	}
+
 	// If hit the tail 
 	for (int i = 0; i < nTail; i++)
 	{
@@ -173,9 +191,20 @@ void logic()
 			goto label4;
 	score += 10;
 	nTail++;
+
+	
+
 	if (score >= 50) {
 		sleep_time = 50;
 		}
+
+	if (score >= 80) { //obstacle
+
+		obX = rand() % 15;
+		obY = rand() % 15;
+		
+	}
+	
 	}
 	else if (score >= 100) {
 		sleep_time = 10 * rand() % 5;
@@ -197,6 +226,7 @@ int main()
 		draw();
 		input();
 		logic();
+		
 		Sleep(sleep_time);
 	}
 	return 0;

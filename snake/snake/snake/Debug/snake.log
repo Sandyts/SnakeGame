@@ -1,5 +1,5 @@
 ﻿  Source.cpp
-c:\users\user\desktop\snakegame\snake\snake\snake\source.cpp(19): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\snakegame\snake\snake\snake\source.cpp(188): warning C4101: 'm': 未參考的區域變數
-c:\users\user\desktop\snakegame\snake\snake\snake\source.cpp(188): warning C4101: 'n': 未參考的區域變數
-  snake.vcxproj -> C:\Users\USER\Desktop\SnakeGame\snake\snake\Debug\snake.exe
+C:\Users\e4872\桌面\SnakeGame\snake\snake\snake\Source.cpp(20,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\e4872\桌面\SnakeGame\snake\snake\snake\Source.cpp(217,6): warning C4101: 'm': unreferenced local variable
+C:\Users\e4872\桌面\SnakeGame\snake\snake\snake\Source.cpp(217,9): warning C4101: 'n': unreferenced local variable
+  snake.vcxproj -> C:\Users\e4872\桌面\SnakeGame\snake\snake\Debug\snake.exe
