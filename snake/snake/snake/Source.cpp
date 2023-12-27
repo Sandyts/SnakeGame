@@ -5,20 +5,17 @@
 #include <time.h>
 
 int i, j, height = 20, width = 20;
-int score,sleep_time=100;
+int score, sleep_time = 100;
 int x, y, fruitx, fruity, flag;
 int tailX[100], tailY[100];
 int nTail;
-bool print,gameover;
+bool print, gameover;
 
 // Function to generate the fruit 
 // within the boundary 
-void setup()
-{
+void setup() {
 	gameover = false;
-	srand(time(NULL));
-
-	// Stores height and width 
+	srand((unsigned int)time(NULL));
 	x = height / 2;
 	y = width / 2;
 
@@ -34,53 +31,46 @@ label2:
 }
 
 // Function to draw the boundaries 
-void draw()
-{
-	system("cls");//clear previous movement
+void draw() {
+	system("cls");
 	for (i = 0; i < width + 2; i++) {
 		printf("#");
 	}
 	printf("\n");
 	for (i = 1; i <= height; i++) {
-		for(j =1 ; j<= width+1 ; j++)
-		{
-			if (j == 1 || j== width +1) 
+		for (j = 1; j <= width + 1; j++) {
+			if (j == 1 || j == width + 1)
 				printf("#");
 
-			if (i == y && j == x) 
-				printf("0");
-			
-			else if (j == fruitx && i == fruity) 
+			if (i == y && j == x)
+				printf("Q");
+
+			else if (j == fruitx && i == fruity)
 				printf("*");
-			
+
 			else {
-					print = false;
-					for (int k = 0; k < nTail; k++)
-					{
-						if (tailX[k] == j && tailY[k] == i)
-						{
-							printf("o");
-							print = true;
-						}
+				print = false;
+				for (int k = 0; k < nTail; k++) {
+					if (tailX[k] == j && tailY[k] == i) {
+						printf("o");
+						print = true;
 					}
-					if (!print)
-						printf(" ");
 				}
+				if (!print)
+					printf(" ");
 			}
-			printf("\n");
 		}
-		for (i = 0; i < width + 2; i++) {
-			printf("#");
-		}
-		// Print the score after the 
-		// game ends 
-		printf("\n\n----------------------------\nscore = %d", score);
-		printf("\npress X to quit the game");
+		printf("\n");
+	}
+	for (i = 0; i < width + 2; i++) {
+		printf("#");
+	}
+	printf("\n\n----------------------------\nscore = %d", score);
+	printf("\npress X to quit the game");
 }
 
 // Function to take the input 
-void input()
-{
+void input() {
 	if (_kbhit()) {
 		switch (_getch()) {
 		case 'a':
@@ -104,16 +94,13 @@ void input()
 
 // Function for the logic behind 
 // each movement 
-void logic()
-{
-
+void logic() {
 	int prevX = tailX[0];
 	int prevY = tailY[0];
 	int prev2X, prev2Y;
 	tailX[0] = x;
 	tailY[0] = y;
-	for (int i = 1; i < nTail; i++)
-	{
+	for (int i = 1; i < nTail; i++) {
 		prev2X = tailX[i];
 		prev2Y = tailY[i];
 		tailX[i] = prevX;
@@ -121,60 +108,51 @@ void logic()
 		prevX = prev2X;
 		prevY = prev2Y;
 	}
-	
+
 	switch (flag) {
-		case 1:
-			x--;
-			break;
-		case 2:
-			y++;
-			break;
-		case 3:
-			x++;
-			break;
-		case 4:
-			y--;
-			break;
-		default:
-			break;
+	case 1:
+		x--;
+		break;
+	case 2:
+		y++;
+		break;
+	case 3:
+		x++;
+		break;
+	case 4:
+		y--;
+		break;
+	default:
+		break;
 	}
 
-	// If the game is over 
 	if (x < 0 || x > height || y < 0 || y > width) {
 		gameover = true;
 		printf("\n\nGame Over!!!\n");
 		printf("You Hit The Wall!!\n");
 	}
 
-	// If hit the tail 
-	for (int i = 0; i < nTail; i++)
-	{
-		if (tailX[i] == x && tailY[i] == y)
-		{
+	for (int i = 0; i < nTail; i++) {
+		if (tailX[i] == x && tailY[i] == y) {
 			gameover = true;
 			printf("\n\nGame Over!!!\n");
 			printf("You Hit The Tail!!\n");
 		}
 	}
 
-	// If snake reaches the fruit 
-	// then update the score 
 	if (x == fruitx && y == fruity) {
 	label3:
 		fruitx = rand() % 20;
 		if (fruitx == 0)
 			goto label3;
-
-		// After eating the above fruit 
-		// generate new fruit 
 	label4:
 		fruity = rand() % 20;
 		if (fruity == 0)
 			goto label4;
-	score += 10;
-	nTail++;
-	if (score >= 50) {
-		sleep_time = 50;
+		score += 10;
+		nTail++;
+		if (score >= 50) {
+			sleep_time = 50;
 		}
 	}
 	else if (score >= 100) {
@@ -182,22 +160,20 @@ void logic()
 	}
 }
 
-// Driver Code 
-int main()
-{
-	int m, n;
+int main() {
+	char playAgain;
 
-	// Generate boundary 
-	setup();
+	do {
+		setup();
+		while (!gameover) {
+			draw();
+			input();
+			logic();
+			Sleep(sleep_time);
+		}
+		printf("\nDo you want to play again? Press 'X' to exit or any other key to play again: ");
+		playAgain = _getch();
+	} while (playAgain != 'x' && playAgain != 'X');
 
-	// Until the game is over 
-	while (!gameover) {
-
-		// Function Call 
-		draw();
-		input();
-		logic();
-		Sleep(sleep_time);
-	}
 	return 0;
 }
