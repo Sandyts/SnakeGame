@@ -5,14 +5,14 @@
 #include <stdlib.h> 
 #include <windows.h> 
 #include <time.h>
-
+#include <iostream>
 int i, j, height = 20, width = 20;
 int gameover, score;
 int x, y, fruitx, fruity, flag;
 int tailX[100], tailY[100];
 int nTail;
 bool print;
-
+int delaytime = 100;
 // Function to generate the fruit 
 // within the boundary 
 void setup()
@@ -110,7 +110,7 @@ void input()
 // each movement 
 void logic()
 {
-	Sleep(100); 
+	Sleep(delaytime); 
 
 	int prevX = tailX[0];
 	int prevY = tailY[0];
@@ -180,14 +180,42 @@ void logic()
 	}
 }
 
+
+void menu() {
+	int choice;
+
+	// 顯示遊戲菜單
+	std::cout << "遊戲菜單:" << std::endl;
+	std::cout << "1. 簡單模式" << std::endl;
+	std::cout << "2. 困難模式" << std::endl;
+
+	// 接收玩家的選擇
+	std::cout << "請選擇難度（1或2）: ";
+	std::cin >> choice;
+
+	// 根據選擇設置遊戲速度
+	if (choice == 1) {
+		std::cout << "你選擇了簡單模式。遊戲速度設置為慢速。" << std::endl;
+		delaytime = 50;
+		// 在這裡添加設置慢速的代碼
+	}
+	else if (choice == 2) {
+		std::cout << "你選擇了困難模式。遊戲速度設置為快速。" << std::endl;
+		// 在這裡添加設置快速的代碼
+		delaytime = 100;
+	}
+	else {
+		std::cout << "無效的選擇。請輸入1或2。" << std::endl;
+	}
+
+}
+
 // Driver Code 
 int main()
 {
-	int m, n;
-
 	// Generate boundary 
 	setup();
-
+	menu();
 	// Until the game is over 
 	while (!gameover) {
 
