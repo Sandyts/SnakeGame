@@ -5,10 +5,11 @@
 #include <time.h>
 
 int i, j, height = 20, width = 20;
-int score,sleep_time=100;
-int x, y, fruitx, fruity, flag;
+int preox, preoy; //for the position os obstacle 
+int score=0,sleep_time=100;
+int x, y, fruitx, fruity, flag, obX, obY;
 int tailX[100], tailY[100];
-int nTail;
+int nTail=0;
 bool print,gameover;
 
 // Function to generate the fruit 
@@ -16,7 +17,7 @@ bool print,gameover;
 void setup()
 {
 	gameover = false;
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));	
 
 	// Stores height and width 
 	x = height / 2;
@@ -31,6 +32,10 @@ label2:
 	if (fruity == 0)
 		goto label2;
 	score = 0;
+	nTail = 0;
+	preox = 0;
+	preoy = 0;
+	sleep_time = 100;
 }
 
 // Function to draw the boundaries 
@@ -48,10 +53,19 @@ void draw()
 				printf("#");
 
 			if (i == y && j == x) 
-				printf("0");
+				printf("Q");
 			
 			else if (j == fruitx && i == fruity) 
 				printf("*");
+
+			//===
+			else if (i == obY && j == obY && score >= 30)
+			{
+				preox = i;
+				preoy = j;
+				printf("=====");
+				j += 4;
+			}
 			
 			else {
 					print = false;
@@ -75,6 +89,8 @@ void draw()
 		// Print the score after the 
 		// game ends 
 		printf("\n\n----------------------------\nscore = %d", score);
+		printf("\nob:  %d, %d", obX, obY); //next obstacle
+		printf("\npreo: %d, %d", preox, preoy); // next obstacle for now
 		printf("\npress X to quit the game");
 }
 
@@ -106,7 +122,6 @@ void input()
 // each movement 
 void logic()
 {
-
 	int prevX = tailX[0];
 	int prevY = tailY[0];
 	int prev2X, prev2Y;
@@ -141,9 +156,16 @@ void logic()
 
 	// If the game is over 
 	if (x < 0 || x > height || y < 0 || y > width) {
-		gameover = true;
 		printf("\n\nGame Over!!!\n");
 		printf("You Hit The Wall!!\n");
+		gameover = true;
+	}
+
+	// If hit the obstacle 
+	if (x >= preox && x < (preox + 6) && (y == preoy)) {
+		gameover = true;
+		printf("\n\nGame Over!!!\n");
+		printf("You Hit The obstacle!!\n");
 	}
 
 	// If hit the tail 
@@ -151,9 +173,9 @@ void logic()
 	{
 		if (tailX[i] == x && tailY[i] == y)
 		{
-			gameover = true;
 			printf("\n\nGame Over!!!\n");
 			printf("You Hit The Tail!!\n");
+			gameover = true;
 		}
 	}
 
@@ -165,39 +187,46 @@ void logic()
 		if (fruitx == 0)
 			goto label3;
 
-		// After eating the above fruit 
-		// generate new fruit 
+	// After eating the above fruit 
+	// generate new fruit 
 	label4:
 		fruity = rand() % 20;
 		if (fruity == 0)
 			goto label4;
 	score += 10;
 	nTail++;
+
 	if (score >= 50) {
 		sleep_time = 50;
 		}
-	}
 	else if (score >= 100) {
 		sleep_time = 10 * rand() % 5;
 	}
+	if (score >= 30) { //obstacle
+
+		obX = rand() % 15;
+		obY = rand() % 15;
+
+	}
+
+}
 }
 
 // Driver Code 
-int main()
-{
-	int m, n;
+int main() {
+	char playAgain;
 
-	// Generate boundary 
-	setup();
+	do {
+		setup();
+		while (!gameover) {
+			draw();
+			input();
+			logic();
+			Sleep(sleep_time);
+		}
+		printf("\nDo you want to play again? Press 'X' to exit or any other key to play again: ");
+		playAgain = _getch();
+	} while (playAgain != 'x' && playAgain != 'X');
 
-	// Until the game is over 
-	while (!gameover) {
-
-		// Function Call 
-		draw();
-		input();
-		logic();
-		Sleep(sleep_time);
-	}
 	return 0;
 }
