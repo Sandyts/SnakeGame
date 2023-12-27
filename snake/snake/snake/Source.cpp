@@ -28,6 +28,7 @@ label2:
 	if (fruity == 0)
 		goto label2;
 	score = 0;
+	nTail = 0;
 }
 
 // Function to draw the boundaries 
