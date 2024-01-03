@@ -31,6 +31,7 @@ label2:
 	fruity = rand() % 20;
 	if (fruity == 0)
 		goto label2;
+
 	score = 0;
 	nTail = 0;
 	preox = 0;
@@ -59,7 +60,7 @@ void draw()
 				printf("*");
 
 			//===
-			else if (i == obY && j == obY && score >= 30)
+			else if (i == obY && j == obY && score >= 40)
 			{
 				preox = i;
 				preoy = j;
@@ -202,11 +203,9 @@ void logic()
 	else if (score >= 100) {
 		sleep_time = 10 * rand() % 5;
 	}
-	if (score >= 30) { //obstacle
-
+	if (score >= 40) { //obstacle
 		obX = rand() % 15;
 		obY = rand() % 15;
-
 	}
 
 }
