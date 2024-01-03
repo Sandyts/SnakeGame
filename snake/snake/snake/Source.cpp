@@ -254,7 +254,7 @@ int main() {
 			logic();
 			Sleep(sleep_time);
 		}
-		printf("\nDo you want to play again? Press 'X' to exit or any other key to play again: ");
+		printf("\nDo you want to play again? Press 'X' to exit or any other key to play again: \n");
 		playAgain = _getch();
 	} while (playAgain != 'x' && playAgain != 'X');
 
