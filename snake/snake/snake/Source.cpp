@@ -11,6 +11,7 @@ int x, y, fruitx, fruity, flag, obX, obY;
 int tailX[100], tailY[100];
 int nTail=0;
 bool print,gameover;
+int delaytime = 100;
 
 // Function to generate the fruit 
 // within the boundary 
@@ -40,7 +41,7 @@ label2:
 }
 
 // Function to draw the boundaries 
-void draw()
+void draw()	
 {
 	system("cls");//clear previous movement
 	for (i = 0; i < width + 2; i++) {
@@ -211,12 +212,42 @@ void logic()
 }
 }
 
+void menu() {
+	int choice;
+
+	// 顯示遊戲菜單
+	printf("Menu : \n");
+	printf("1. Easy Mode \n");
+	printf("2. Hard Mode \n");
+
+	// 接收玩家的選擇
+	printf( "Enter 1 for Easy / 2 for Hard : \n");
+	scanf("%d", &choice);
+
+	// 根據選擇設置遊戲速度
+	if (choice == 1) {
+		printf( "You choose Easy Mode. Speed Slow \n");
+		delaytime = 50;
+		// 在這裡添加設置慢速的代碼
+	}
+	else if (choice == 2) {
+		printf("You choose Hard Mode. Speed Fast \n");
+		// 在這裡添加設置快速的代碼
+		delaytime = 100;
+	}
+	else {
+		printf("ERROR!!! Please enter 1 or 2 \n");
+	}
+
+}
+
 // Driver Code 
 int main() {
 	char playAgain;
 
 	do {
 		setup();
+		menu();
 		while (!gameover) {
 			draw();
 			input();
