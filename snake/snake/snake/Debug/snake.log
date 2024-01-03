@@ -1,2 +1,45 @@
 ﻿  Source.cpp
-  snake.vcxproj -> C:\Users\USER\Desktop\SnakeGame\snake\snake\Debug\snake.exe
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(217): error C2039: 'cout': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(217): error C2065: 'cout': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(217): error C2039: 'endl': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(217): error C2065: 'endl': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(218): error C2039: 'cout': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(218): error C2065: 'cout': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(218): error C2039: 'endl': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(218): error C2065: 'endl': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(219): error C2039: 'cout': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(219): error C2065: 'cout': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(219): error C2039: 'endl': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(219): error C2065: 'endl': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(222): error C2039: 'cout': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(222): error C2065: 'cout': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(223): error C2039: 'cin': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(223): error C2065: 'cin': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(227): error C2039: 'cout': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(227): error C2065: 'cout': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(227): error C2039: 'endl': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(227): error C2065: 'endl': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(228): error C2065: 'delaytime': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(232): error C2039: 'cout': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(232): error C2065: 'cout': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(232): error C2039: 'endl': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(232): error C2065: 'endl': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(234): error C2065: 'delaytime': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(237): error C2039: 'cout': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(237): error C2065: 'cout': 未宣告的識別項
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(237): error C2039: 'endl': 不是 'std' 的成員
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stddef.h(19): note: 請參閱 'std' 的宣告
+c:\users\max\desktop\snakegame\snake\snake\snake\source.cpp(237): error C2065: 'endl': 未宣告的識別項

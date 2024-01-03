@@ -210,13 +210,41 @@ void logic()
 
 }
 }
+void menu() {
+	int choice;
 
+	// 顯示遊戲菜單
+	std::cout << "遊戲菜單:" << std::endl;
+	std::cout << "1. 簡單模式" << std::endl;
+	std::cout << "2. 困難模式" << std::endl;
+
+	// 接收玩家的選擇
+	std::cout << "請選擇難度（1或2）: ";
+	std::cin >> choice;
+
+	// 根據選擇設置遊戲速度
+	if (choice == 1) {
+		std::cout << "你選擇了簡單模式。遊戲速度設置為慢速。" << std::endl;
+		sleep_time = 100;
+		// 在這裡添加設置慢速的代碼
+	}
+	else if (choice == 2) {
+		std::cout << "你選擇了困難模式。遊戲速度設置為快速。" << std::endl;
+		// 在這裡添加設置快速的代碼
+		sleep_time = 50;
+	}
+	else {
+		std::cout << "無效的選擇。請輸入1或2。" << std::endl;
+	}
+
+}
 // Driver Code 
 int main() {
 	char playAgain;
 
 	do {
 		setup();
+		menu();
 		while (!gameover) {
 			draw();
 			input();
